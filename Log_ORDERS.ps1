@@ -1,0 +1,1 @@
+Get-Content D:\OMNILAB\LabOnLineLink\LOG\HOST_Order_HL7.log -Wait
