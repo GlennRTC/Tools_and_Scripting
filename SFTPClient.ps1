@@ -1,11 +1,11 @@
-# Set dummy variables
+# Configura Variables de Acceso
 $user = "username"
 $password = "password"
 $host = "example.com"
-$remotePath = "/path/to/remote/folder/"
-$localPath = "C:\path\to\local\file.txt"
+$remotePath = "/Ordenes/"
+$localPath = "D:\OMNILAB\DERIVACIONES\PETICIONES\*.txt"
 
-# Load assembly and set up session options
+# Carga modulo Assembly y abre 
 Add-Type -Path "WinSCPnet.dll"
 $sessionOptions = New-Object WinSCP.SessionOptions -Property @{
     Protocol = [WinSCP.Protocol]::Sftp
@@ -14,7 +14,7 @@ $sessionOptions = New-Object WinSCP.SessionOptions -Property @{
     Password = $password
 }
 
-# Connect to session and transfer file
+# Conecta secion y transfiere archivo
 $session = New-Object WinSCP.Session
 try
 {
@@ -22,10 +22,12 @@ try
     $transferResult = $session.PutFiles($localPath, $remotePath)
     $transferResult.Check()
 }
+
+# Cierra secion.
 finally
 {
     $session.Dispose()
 }
 
-# Exit PowerShell
+# Salida PowerShell
 Exit
