@@ -1,0 +1,9 @@
+/*crear Servicio CDS en Linux*/
+sudo service AlinIQ_CDSService status
+cd /app/AlinIQ_CDSServer/
+sudo update-rc.d AlinIQ_CDSService defaults
+sudo systemctl daemon-reload
+sudo service AlinIQ_CDSService start
+
+/*Comando para cambiar la MAC*/
+sudo macchanger -m 20:67:7c:e1:15:bb enp4s0f0
