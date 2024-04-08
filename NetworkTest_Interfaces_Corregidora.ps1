@@ -1,8 +1,8 @@
 # Definir la dirección IP o el nombre de host del servidor
-$server = "192.168.1.100"
+$server = "10.0.20.58"
 
 # Crear el archivo de registro
-Start-Transcript -Path "network_tests.log" -Append
+Start-Transcript -Path "C:\Users\Administrador\Documents\PruebasRed\network_tests.log" -Append
 
 # Prueba de ping
 Write-Output "Prueba de ping:"
@@ -21,10 +21,14 @@ tracert $server
 #$httpResponse = Invoke-WebRequest -Uri "http://$server" -UseBasicParsing
 #$httpResponse.StatusCode
 
-# Prueba de conexión TCP
-Write-Output "Prueba de conexión TCP (puerto 80):"
+# Prueba de conexion TCP
+Write-Output "Prueba de conexión TCP (puerto 5001):"
+$nmapPath = "C:\Program Files (x86)\Nmap\nmap.exe"  # Ruta al ejecutable de nmap
 try {
-    $netstatOutput = netstat -np tcp | find "80"
+    $nmapOutput = & $nmapPath -p 5001 -sV $server
+    Write-Output $nmapOutput
+	Write-Output "--- Netstat ---"
+	$netstatOutput = netstat -np tcp | Select-string -pattern "5001"
     Write-Output $netstatOutput
 } catch {
     Write-Output "Error de conexión TCP: $_"
