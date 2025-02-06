@@ -1,0 +1,5 @@
+## Comando para Setear Hora Local Ubuntu 14.04 (DMS)
+root@fdm384:~# hwclock
+Thu 06 Feb 2025 06:04:23 PM COT  -0.375297 seconds
+root@fdm384:~# hwclock --localtime
+Thu 06 Feb 2025 01:08:05 PM COT  -0.375297 seconds
